@@ -124,7 +124,7 @@ class UnpackerBase(object):
         )]
         if sys.platform == 'darwin' and self.brew_package is not None:
             msgs.extend((
-                'You can install the unpacker using brew:',
+                'You can install the unpacker threw brew:',
                 '',
                 '    $ brew install %s' % self.brew_package,
             ))
@@ -362,7 +362,7 @@ class ZipUnpacker(Unpacker):
     args = [FILENAME]
     mimetypes = ['application/zip']
     stream_processor = StreamProcessor(
-        format=r'^  inflating: (.*?)$',
+        format=br'^  inflating: (.*?)$',
         stream='stdout',
     )
 
@@ -377,7 +377,7 @@ class RarUnpacker(Unpacker):
     mimetypes = ['application/zip']
     brew_package = 'unrar'
     stream_processor = StreamProcessor(
-        format=r'^Extracting  (.*?)\s+OK\s*$',
+        format=br'^Extracting  (.*?)\s+OK\s*$',
         stream='stdout',
     )
 
@@ -392,7 +392,7 @@ class P7ZipUnpacker(Unpacker):
     mimetypes = ['application/zip']
     brew_package = 'p7zip'
     stream_processor = StreamProcessor(
-        format=r'^Extracting  (.*?)$',
+        format=br'^Extracting  (.*?)$',
         stream='stdout',
     )
 
@@ -407,7 +407,7 @@ class CabUnpacker(Unpacker):
     mimetypes = ['application/vnd.ms-cab-compressed']
     brew_package = 'cabextract'
     stream_processor = StreamProcessor(
-        format=r'^  extracting (.*?)$',
+        format=br'^  extracting (.*?)$',
         stream='stdout',
     )
 
@@ -421,7 +421,7 @@ class ArUnpacker(Unpacker):
     args = ['-vx', FILENAME]
     mimetypes = ['application/x-archive']
     stream_processor = StreamProcessor(
-        format=r'^x - (.*?)$',
+        format=br'^x - (.*?)$',
         stream='stdout',
     )
 
