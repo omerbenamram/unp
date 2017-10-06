@@ -68,7 +68,7 @@ class StreamProcessor(object):
             line = stream.readline()
             if not line:
                 break
-            match = self.regex.search(line)
+            match = self.regex.search(line.decode())
             if match is not None:
                 yield match.group(1)
 
