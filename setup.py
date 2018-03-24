@@ -12,6 +12,7 @@ setup(
     py_modules=['unp'],
     install_requires=[
         'click>=3.0',
+        'six'
     ],
     classifiers=[
         'License :: OSI Approved :: BSD License',
