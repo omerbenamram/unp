@@ -362,7 +362,7 @@ class ZipUnpacker(Unpacker):
     args = [FILENAME]
     mimetypes = ['application/zip']
     stream_processor = StreamProcessor(
-        format=br'^  inflating: (.*?)$',
+        format=r'^  inflating: (.*?)$',
         stream='stdout',
     )
 
@@ -377,7 +377,7 @@ class RarUnpacker(Unpacker):
     mimetypes = ['application/zip']
     brew_package = 'unrar'
     stream_processor = StreamProcessor(
-        format=br'^Extracting  (.*?)\s+OK\s*$',
+        format=r'^Extracting  (.*?)\s+OK\s*$',
         stream='stdout',
     )
 
@@ -392,7 +392,7 @@ class P7ZipUnpacker(Unpacker):
     mimetypes = ['application/zip']
     brew_package = 'p7zip'
     stream_processor = StreamProcessor(
-        format=br'^Extracting  (.*?)$',
+        format=r'^Extracting  (.*?)$',
         stream='stdout',
     )
 
@@ -407,7 +407,7 @@ class CabUnpacker(Unpacker):
     mimetypes = ['application/vnd.ms-cab-compressed']
     brew_package = 'cabextract'
     stream_processor = StreamProcessor(
-        format=br'^  extracting (.*?)$',
+        format=r'^  extracting (.*?)$',
         stream='stdout',
     )
 
@@ -421,7 +421,7 @@ class ArUnpacker(Unpacker):
     args = ['-vx', FILENAME]
     mimetypes = ['application/x-archive']
     stream_processor = StreamProcessor(
-        format=br'^x - (.*?)$',
+        format=r'^x - (.*?)$',
         stream='stdout',
     )
 
